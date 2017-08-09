@@ -16,7 +16,7 @@ export class ProductService {
     new Comment(2, 1, "2017-02-02 22:22:22", "Jiarun", 4, "Good"),
     new Comment(3, 1, "2017-02-02 22:22:22", "Ryan", 2, "Not like"),
     new Comment(4, 2, "2017-02-02 22:22:22", "Elva", 3, "OK")
-  ]
+  ];
   // this.products.push(new Product(7, "Seventh Product", 7.99, 3.5, "This is the seventh product.", ["Electronic", "Hardware"]));
   constructor() { }
 
@@ -29,6 +29,9 @@ export class ProductService {
   getCommentsForProductId(id:number): Comment[] {
     // 过滤每个评论，当发现这个评论的productId和传入的参数Id相等，则取出
     return this.comments.filter((c: Comment) => c.productId == id);
+  }
+  getAllCategories(): string[] {
+    return ["Electronic", "Hardware", "Game", "Software", "Movie"];
   }
 }
 
