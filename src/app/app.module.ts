@@ -14,6 +14,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {ProductService} from "./shared/product.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FilterPipe } from './pipe/filter.pipe';
+import {HttpModule} from "@angular/http";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 const routeConfig: Routes = [
   {path: '', component: HomeComponent},
@@ -37,9 +39,11 @@ const routeConfig: Routes = [
     BrowserModule,
     RouterModule.forRoot(routeConfig),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  providers: [ProductService],
+  providers: [ProductService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -36,6 +36,9 @@ export class SearchComponent implements OnInit {
   onSearch(){
     if(this.formModel.valid){
       console.log(this.formModel.value);
+      // 提交按钮被点击时发射service中定义的searchEvent事件，携带的数据是符合ProductSearchParams类定义的对象。
+      // 表单里的值正好符合这个类定义，所以可以直接将表单值发射出去
+      this.productService.searchEvent.emit(this.formModel.value);
     }
   }
 }
